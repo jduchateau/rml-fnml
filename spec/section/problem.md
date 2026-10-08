@@ -33,3 +33,9 @@ but no data transformations.
 
 </aside>
 </aside>
+
+
+> FIXME
+> Complete the example with what we width to accomplish with data input output examples.
+> The uppercase example could be used as the simple example, and some data normalisation for a more complex one (where
+> later we will show condition, nested functions).
