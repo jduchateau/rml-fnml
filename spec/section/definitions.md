@@ -76,6 +76,9 @@ An <a data-cite="RML-Core#dfn-expression-map">Expression Map</a> can have the fo
 > is not allowing us to extend ExpressionMap as we are not contributing a subclass of expression map but directly
 > contributing a kind of expression to expression map.
 
+> FIXME
+> Later note after reading ontology, we should probably combine both so that  Function-valued Expression Map is defined entirely in one place not here and there.
+
 ---
 
 ### FNML

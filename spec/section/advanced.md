@@ -7,6 +7,18 @@ multivalue expression evaluation results are processed in sequence.
 So, if a multivalue expression evaluation contains the multivalue `"a"`, `"b"`, and `"c"`,
 the function is applied to each individual value in that order.
 
+> FIXME
+> Good but could be moved next to where we define how functions are executed also with the other comments such as the reuse of function, errors handling, functions parameters, type conversion and rdf natural datatype mapping.
+>
+> About type conversion (or not):
+> What happens when we do a divide(trim(reference "price"), 100), price gives a " 2200 " that encodes 22€
+> should the function crash, do RML-FNML define that trim that return a xsd:string and divide that expects a xsd:number specify the processor should do a implicite conversion or should the user introduce an explicit conversion: divide(asNumber(trim(reference "price")), 100)
+> What happens with those types is unspecified to my knowledge?
+>
+> Previously with fno:Execution there was that rdf intermediary all the time but if that is removed then we can have native values and should at least specify something or we could also leave typing out and remove the requested fno:type ? 
+>
+> Are the executions models of FnO and RML-FNML compatible?
+
 ### Nested functions
 
 As the values of a function are represented using [=Expression Map=]s,
@@ -16,9 +28,14 @@ it is possible to nest functions: you generate a term in a first function, and t
 For an old example, see [RMLFNOTC0018](https://github.com/RMLio/rml-fno-test-cases/tree/master/RMLFNOTC0018-CSV).
 </p>
 
+> FIXME To be removed.
+> Ahh but i understand now what meant that it was generating the fno:Execution.
+
 <p class="issue" data-number="3" data-format="markdown">
 For now, it is unclear how to handle a nested function where that nested Triples Map contains a join condition.
 </p>
+
+> FIXME Probably remove as well.
 
 <aside class="example" id="example-nested-function" title="usage of nested function">
 <aside class="ex-mapping">
@@ -94,6 +111,12 @@ To be able to use this shortcut, conforming mapping engines MUST support followi
   isNotNull and IF are defined below, rest is an excercise for the reader.
   The actual FnO definitions are TODO.
 </p>
+
+> FIXME
+> Definition of NULL not provided!
+> With or without the nulls from the rml logical source?
+>
+> IF should be https://w3id.org/imec/idlab/function#IF or in the new list of MUST be supported functions?
 
 <aside class="example" id="example-condition" title="usage of condition">
 <aside class="ex-mapping">
@@ -250,6 +273,11 @@ If we execute following RML mapping
 
 </aside>
 </aside>
+
+> FIXME
+> A small note about return.
+> Is there an order in the returns in the definition of the function yes but not in the returns of the function if i understands right. So returns still keep their oredr implicitly? Could it be extended for return asking for an index from teh list or return is really just about the return iri.
+>
 
 This will result in two triples, because in `conditionValue` you have two valid condition executions
 

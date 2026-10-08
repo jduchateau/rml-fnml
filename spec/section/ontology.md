@@ -1,5 +1,10 @@
 ## FNML
 
+> FIXME
+> Given teh previosu section this one has a lower value for me when tring to undertand the spec.
+> Except the Function-valued Expression Map definition that specify rml:functionExecution, rml:condition, rml:returnMap/rml:return 
+>
+
 We use terms defined in the FNML ontology to link [[RML]] with [[FNO]].
 
 The ontology namespace is [http://w3id.org/rml/](http://w3id.org/rml/),
@@ -45,6 +50,11 @@ For now, we refer to the R2RML spec, but it is assumed these references will be 
 This also means that all changes to existing definitions such as `term type` etc. are complementary to this specification.
 </p>
 
+> FIXME
+> Why did we needed a proper definition of TermMap? Does the function knows something about it being executed from a TermMap or a ExpressionMap ?
+> that we have rml:return (or rml:returnMap) i understand but has nothing to do in particular with TermMap while termType language map and datatypemap doesn't change anything at function execution. For type conversion see my node in definitions about it. 
+> Maybe we need to define **Natural RDF mapping of functions values** contributed by FNML, just like in rml-io-registry?
+
 ### rml:ReturnMap
 
 See [=Return map=].
@@ -77,6 +87,14 @@ Links [=function-valued expression map=] with [=Function Execution=].
 Domain: rml:ExpressionMap
 
 Range: rml:FunctionExecution
+
+> FIXME
+> Ah yes these are nice maybe have that directly next to their defintion like in lv?
+> | Property | Domain | Range |
+> |---|---|---|
+> | `rml:functionExecution` | `rml:ExpressionMap` | `rml:FunctionExecution` |
+> | `rml:returnMap` | `rml:ExpressionMap` | `rml:ReturnMap` |
+> 
 
 ### rml:returnMap
 
@@ -138,3 +156,7 @@ Range: rml:TermMap
 see, e.g. test case [RMLFNOTC0019](https://github.com/RMLio/rml-fno-test-cases/tree/master/RMLFNOTC0019-CSV).
 </p>
 </div>
+
+> FIXME:
+> Maybe *Joining using data transformations* could be moved in the problem section? or probably into **advanced usage**.
+> 

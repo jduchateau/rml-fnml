@@ -6,12 +6,21 @@ we combine [[RML]] with declarative function descriptions in [[FnO]].
 Within [[FnO]], [=Function=]s and [=Execution=]s are described.
 Within FNML, we refer to [=Execution=]s that link to specific [=Function=]s.
 
+> FIXME
+> Is it still true that we will not have a a set of function described ?
+> The link to FnO for function description still exists but are we reusing the ontology of fno or the specs with the execution and the registry ? 
+
 [=Triples Map=]s generate output triples from input data.
 We use an intermediate [=Function-valued Expression Map=] to use a specific output (via a [=Return Map=]) of
 a [=Function Execution=].
 That [=Function Execution=] specifies which [[FnO]] function to use (via a [=Function Map=])
 and uses [=Input=]s to link input data (via regular [[RML]] [=Term Map=]s)
 to [=Parameter=]s (via [=Parameter Map=]s).
+
+> FIXME
+> It doesn't specify anything new. I would remove Triples Map definition. 
+> Could we instead have an overview of how a function in FnO is defined here ?
+> Or rather which part of its definition are relevant for RML-FNML.
 
 <p class="note" data-format="markdown">
 If an execution returns multiple returning outputs (eg, a result and a status code),
@@ -22,7 +31,16 @@ which means that you cannot specify the difference between
 'using 2 outputs from one execution' vs 'use a different output from 2 different executions'.
 </p>
 
+> FIXME
+> This note confuses me, that the first time I really read it attentively: what does mean to "leave out the intermediate Function-valued Expression Map"?
+> 
+> "allow for reuse", does it imply that we can reuse functions executions ? In which cases ? Doesn't it depend on teh function (problem & implementation) itself as well? 
+> 
+
 ### Function Example
+
+> FIXME
+> Maybe the link to FnO would be better in defintions section and this one would be with examples ?
 
 We use [Example 1](#example-rml),
 where we want to perform an uppercase operation to a set of fields.
@@ -118,6 +136,9 @@ graph LR
 </pre>
 <figcaption>Visual overview of connections FNML</figcaption>
 </figure>
+
+> FIXME
+> These mermaid diagrams are not really readable, maybe remove them?
 
 <aside class="example" id="example-touppercase-rml" title="using toUppercase in an RML mapping">
 <aside class="ex-mapping">
