@@ -1,0 +1,27 @@
+name: Deploy Spec to GitHub Pages
+
+on:
+  push:
+    branches:
+      - jakub-review
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build and Deploy Spec with w3c/spec-prod
+        uses: w3c/spec-prod@v2
+        with:
+          TOOLCHAIN: respec
+          SOURCE: spec/dev.html
+          GH_PAGES_BRANCH: gh-pages
+          VALIDATE_LINKS: false
+          VALIDATE_MARKUP: false
+          BUILD_FAIL_ON: nothing
