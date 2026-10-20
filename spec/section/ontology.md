@@ -5,7 +5,7 @@
 > Except the Function-valued Expression Map definition that specify rml:functionExecution, rml:condition, rml:returnMap/rml:return 
 >
 
-We use terms defined in the FNML ontology to link [[RML]] with [[FNO]].
+We use terms defined in the FNML ontology to link [[RML-Core]] with [[FNO]].
 
 The ontology namespace is [http://w3id.org/rml/](http://w3id.org/rml/),
 the preferred prefix is `rml:`.
@@ -21,7 +21,7 @@ See below for how FNML introduced terms align with RML Core.
 A [=Function-valued Expression Map=] is an [=Expression Map=] that is represented by a resource that has exactly one `rml:functionExecution`.
 The value of the `rml:functionExecution` property must be a valid [=Execution=].
 
-As a consequence, the default [[RML]] processing **is extended**,
+As a consequence, the default [[RML-Core]] processing **is extended**,
 specifically concerning the [default term type depending on whether the Term Map is an Object Map or not](https://w3id.org/rml/core/spec),
 namely, the [=Function-valued Expression Map=]s default [term type](http://w3id.org/rml/core/spec) is `rml:Literal`.
 The change is included below with changes highlighted in bold.

@@ -6,7 +6,7 @@
 
 ### Generic
 
-[[RML]]-independent defintions:
+[[RML-Core]]-independent defintions:
 
 - A <dfn>Function</dfn>: an implementation-independent declaration of a function,
   specified using multiple parameters and multiple returns.
@@ -28,14 +28,14 @@
 
 ### RML
 
-Definitions taken from [[RML]] or [[[R2RML]]]:
+Definitions taken from [[RML-Core]] or [[[R2RML]]]:
 
-- An <dfn>RML mapping</dfn>: defined in [[RML]] at <http://w3id.org/rml/core/spec/>.
-- A <dfn>Triples Map</dfn>: defined in [[RML]] at <http://w3id.org/rml/core/spec/>.
-- A <dfn>Term Map</dfn>: defined in [[RML]] at <http://w3id.org/rml/core/spec/>.
-- a <dfn>Expression Map</dfn>: defined in [[RML]] at <http://w3id.org/rml/core/spec/>.
+- An <dfn>RML mapping</dfn>: defined in [[RML-Core]] at <http://w3id.org/rml/core/spec/>.
+- A <dfn>Triples Map</dfn>: defined in [[RML-Core]] at <http://w3id.org/rml/core/spec/>.
+- A <dfn>Term Map</dfn>: defined in [[RML-Core]] at <http://w3id.org/rml/core/spec/>.
+- a <dfn>Expression Map</dfn>: defined in [[RML-Core]] at <http://w3id.org/rml/core/spec/>.
 <!-- - An <dfn>RML processor</dfn> is a tool that interprets the <a>RML mapping</a> and executes its rules to generate RDF triples. -->
-- A <dfn>constant expression shortcut property</dfn>: defined in [[RML]] at <http://w3id.org/rml/core/spec/>.
+- A <dfn>constant expression shortcut property</dfn>: defined in [[RML-Core]] at <http://w3id.org/rml/core/spec/>.
 
 Within this specification, the [=Expression Map=] definition is extended by adding new possible properties and thus also a new type of Expression Map.
 The change is included below with changes highlighted in bold.

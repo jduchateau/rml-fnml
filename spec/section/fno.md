@@ -1,7 +1,7 @@
 ## Link to FnO: Overview
 
-Instead of integrating a specific set of functions in [[RML]],
-we combine [[RML]] with declarative function descriptions in [[FnO]].
+Instead of integrating a specific set of functions in [[RML-Core]],
+we combine [[RML-Core]] with declarative function descriptions in [[FnO]].
 
 Within [[FnO]], [=Function=]s and [=Execution=]s are described.
 Within FNML, we refer to [=Execution=]s that link to specific [=Function=]s.
@@ -14,7 +14,7 @@ Within FNML, we refer to [=Execution=]s that link to specific [=Function=]s.
 We use an intermediate [=Function-valued Expression Map=] to use a specific output (via a [=Return Map=]) of
 a [=Function Execution=].
 That [=Function Execution=] specifies which [[FnO]] function to use (via a [=Function Map=])
-and uses [=Input=]s to link input data (via regular [[RML]] [=Term Map=]s)
+and uses [=Input=]s to link input data (via regular [[RML-Core]] [=Term Map=]s)
 to [=Parameter=]s (via [=Parameter Map=]s).
 
 > FIXME

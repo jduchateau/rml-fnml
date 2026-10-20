@@ -1,5 +1,5 @@
 RML+FnO is an approach to provide for data transformations when generating knowledge graphs
-from (semi-)structured data using the [[[RML]]].
+from (semi-)structured data using the [[[RML-Core]]].
 
 In RML+FnO, data transformations are defined declaratively, 
 supporting the [[[FnO]]].
