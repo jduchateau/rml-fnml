@@ -1,8 +1,10 @@
 ## FNML
 
 > FIXME
-> Given teh previosu section this one has a lower value for me when tring to undertand the spec.
-> Except the Function-valued Expression Map definition that specify rml:functionExecution, rml:condition, rml:returnMap/rml:return 
+> Given the previous section this one has a lower value for me when tring to understand the spec.
+> Except the [=Function-valued Expression Map=] definition that specify rml:functionExecution, rml:condition, rml:returnMap/rml:return.
+>
+> It could be interesting to move the precises definitions in here instead ? And keep the general logic description in previous sections.
 >
 
 We use terms defined in the FNML ontology to link [[RML-Core]] with [[FNO]].
@@ -25,6 +27,8 @@ As a consequence, the default [[RML-Core]] processing **is extended**,
 specifically concerning the [default term type depending on whether the Term Map is an Object Map or not](https://w3id.org/rml/core/spec),
 namely, the [=Function-valued Expression Map=]s default [term type](http://w3id.org/rml/core/spec) is `rml:Literal`.
 The change is included below with changes highlighted in bold.
+
+> FIXME? Do we need a default term type? It could just follow each term map default instead of specifying one? 
 
 ---
 
@@ -94,7 +98,8 @@ Range: rml:FunctionExecution
 > |---|---|---|
 > | `rml:functionExecution` | `rml:ExpressionMap` | `rml:FunctionExecution` |
 > | `rml:returnMap` | `rml:ExpressionMap` | `rml:ReturnMap` |
-> 
+>
+> Should the domain be a `rml:FunctionValuedExpressionMap` ?
 
 ### rml:returnMap
 

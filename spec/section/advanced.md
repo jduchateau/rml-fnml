@@ -7,15 +7,24 @@ multivalue expression evaluation results are processed in sequence.
 So, if a multivalue expression evaluation contains the multivalue `"a"`, `"b"`, and `"c"`,
 the function is applied to each individual value in that order.
 
-> FIXME
-> Good but could be moved next to where we define how functions are executed also with the other comments such as the reuse of function, errors handling, functions parameters, type conversion and rdf natural datatype mapping.
+> **FIXME**
+> Do we really want to handle multiple values that way?
+> Because then we have the issue that some functions would need to have all values. Doing it with LV or CC to split collect is possible but having a function like `array:map` could do the multi-valued processing (or `array:cartesianProduct`) while keeping it nice for all teh others. However I understand it makes sense to follow the same logic as template.
 >
+> By keeping it that way we must have functionThatNeedsAllValues(gather("$.values[*]") with append strategy)
+>
+
+
+> FIXME
+> How functions are executed also with the other comments such as the reuse of function, errors handling, functions parameters, type conversion and rdf natural datatype mapping.
+
+> **FIXME**
 > About type conversion (or not):
-> What happens when we do a divide(trim(reference "price"), 100), price gives a " 2200 " that encodes 22€
-> should the function crash, do RML-FNML define that trim that return a xsd:string and divide that expects a xsd:number specify the processor should do a implicite conversion or should the user introduce an explicit conversion: divide(asNumber(trim(reference "price")), 100)
+> What happens when we do a `divide(trim(reference "price"), 100)`, price gives a " 2200 " that encodes 22€
+> should the function crash, do RML-FNML define that trim that return a xsd:string and divide that expects a xsd:number specify the processor should do a implicite conversion or should the user introduce an explicit conversion: `divide(parseNumber(trim(reference "price")), 100)`
 > What happens with those types is unspecified to my knowledge?
 >
-> Previously with fno:Execution there was that rdf intermediary all the time but if that is removed then we can have native values and should at least specify something or we could also leave typing out and remove the requested fno:type ? 
+> Previously with fno:Execution there was that **rdf intermediary** all the time but if that is removed then we can have native values and should at least specify something or we could also leave typing out and remove the requested fno:type ? 
 >
 > Are the executions models of FnO and RML-FNML compatible?
 
@@ -100,6 +109,9 @@ For now, it is unclear how to handle a nested function where that nested Triples
 Conditions are a shortcut to make RML mappings more intuitive, but rely on existing FNML functionality.
 It is a shortcut that is applied using the `rml:condition`: an additional ExpressionMap predicate.
 To be able to use this shortcut, conforming mapping engines MUST support following functions:
+
+> FIXME: as an additional ExpressionMap predicate it must be done by a sub-class so need to define one also or change the formulation in rml-core? 
+> Would probably make sense to also mention it near where the extensions to ExpressionMap are defined.
 
 - isNull
 - isNotNull

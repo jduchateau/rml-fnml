@@ -34,7 +34,7 @@ which means that you cannot specify the difference between
 > FIXME
 > This note confuses me, that the first time I really read it attentively: what does mean to "leave out the intermediate Function-valued Expression Map"?
 > 
-> "allow for reuse", does it imply that we can reuse functions executions ? In which cases ? Doesn't it depend on teh function (problem & implementation) itself as well? 
+> "allow for reuse", does it imply that we can reuse functions executions ? In which cases ? Doesn't it depend on the function (problem & implementation) itself as well? 
 > 
 
 ### Function Example
@@ -107,6 +107,8 @@ The latter would be described as follows using an FnO Execution description:
 
 </aside>
 </aside>
+
+> FIXME: So this is not relevant anymore right ?
 
 ## FNML Example - shortcuts
 

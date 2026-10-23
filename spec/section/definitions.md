@@ -23,8 +23,8 @@
 > FIXME
 > - Isn't this section about FnO and function definition instead of "Generic"?
 > - Could it make sense to have the FnO terms definitions linked?
-> - Also, this is the only time there is a mention a function can throw Exception. This is not automatic some languages
-    do without exception, so if we have that kind of error handling, I think we need to define the mechanism.
+> - **Also, this is the only time there is a mention a function can throw Exception. This is not automatic some languages
+    do without exception, so if we have that kind of error handling, I think we need to define the mechanism.**
 
 ### RML
 
@@ -67,14 +67,13 @@ An <a data-cite="RML-Core#dfn-expression-map">Expression Map</a> can have the fo
 > An <a data-cite="RML-Core#dfn-expression-map">expression map</a> that specifies `rml:functionExecution` is termed
 > a [=function-valued expression map=].
 
-
+> FIXME: *What about returnMap and return?*
 
 > FIXME: Also in RML-Core the last point:
 >
 > > another property, or properties, defined by a subclass of `rml:ExpressionMap`.
 >
-> is not allowing us to extend ExpressionMap as we are not contributing a subclass of expression map but directly
-> contributing a kind of expression to expression map.
+> should we create a subclass of rml:ExpressionMap? Ah it is [=Function-valued Expression Map=]
 
 > FIXME
 > Later note after reading ontology, we should probably combine both so that  Function-valued Expression Map is defined entirely in one place not here and there.
@@ -114,10 +113,11 @@ How a list of RDF terms is handled, is out of scope of this spec, but discussed 
 > FIXME: It the previous note true ?
 > They sometimes return strings and other types of things sometime not even a RML concerned type ?
 > For returns we probably have
-> - RML Processor implementation language native types
-> - RDF types (which includes RDF list so we don't need anything special i guess)
-> - Logical Source types
-> - null ? or do we have null because there are null of the language and null of the logical source already
+> - RML Processor implementation language *native types*
+> - *RDF types* (which includes RDF list so we don't need anything special i guess)
+> - *Logical Source types*
+> - *null* ? or do we have null because there are *null of the language* and *null of the logical source* already
+> - *exceptions* ? but what about languages where exceptions don't exists?
 
 > FIXME
 > Do we impose some properties on functions implementations such as:
@@ -126,5 +126,5 @@ How a list of RDF terms is handled, is out of scope of this spec, but discussed 
 > - order of evaluation or arguments
 > - laziness
 >
-> and others ? Or is it unspecified which could lead to strange bugs.
+> and others ? Or is it unspecified which could lead to strange bugs, where mappings could behave differently across different compliant RML processors.
 
