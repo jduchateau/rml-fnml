@@ -113,6 +113,12 @@ An `rml:FunctionExecution` can be identified by an IRI or a blank node:
 
 See [Function Execution Reuse](#execution-reuse) for an example illustrating how a shared execution is used across multiple expression maps.
 
+<div class="ednote">
+<p>
+<strong>TODO (Testing):</strong> Create a test case for function execution reuse (verifying that an execution identified by an IRI is evaluated only once per logical iteration across multiple expression maps).
+</p>
+</div>
+
 #### Dynamic Function Selection (`rml:functionMap`)
 
 When the target function is constant, the shortcut property `rml:function` is used. Alternatively, an explicit `rml:functionMap` allows the target function IRI to be determined dynamically per logical iteration from data values in the logical source (e.g., dynamically selecting a parsing, hashing, or conversion function based on a data field).
