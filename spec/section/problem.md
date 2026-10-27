@@ -1,5 +1,7 @@
 ## The Problem {#problem}
 
+*This section is non-normative.*
+
 Mapping languages allow us to define how knowledge graphs are generated from (semi-)structured data, but standard mappings assume that the original data values can be used as-is.
 Complex data transformations in mapping languages typically are either implemented as custom procedural functions within proprietary mapping engines, or are performed by external pre-processing pipelines prior to mapping.
 

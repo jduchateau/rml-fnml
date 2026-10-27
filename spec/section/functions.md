@@ -46,6 +46,8 @@ grel:stringOut
 
 ### Built-in set of functions {#builtin-functions}
 
+An <a data-cite="RML-Core#dfn-rml-processor">RML processor</a> conforming to RML-FNML MUST support the execution of all functions in this built-in set.
+
 <div class="ednote" title="Functions for condition">
 <p>
 <strong>Editor's Note:</strong> Functions for condition. 

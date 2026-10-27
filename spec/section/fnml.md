@@ -7,6 +7,12 @@ This section defines the classes, properties, and constraints of RML-FNML.
   <figcaption>Visual overview of how FNML introduced terms align with RML-Core and FnO</figcaption>
 </figure>
 
+<div class="ednote" title="Diagram update">
+<p>
+<strong>Editor's Note:</strong> This diagram needs to be updated to integrate <code>rml:condition</code> and Function-valued Expression Map (as well as the possible alternative of a Conditioned Expression Map). It also reflects ongoing discussions regarding whether <code>rml:functionMap</code> and <code>rml:parameterMap</code> should be retained or removed.
+</p>
+</div>
+
 ### Function-valued Expression Map {#function-valued-expression-map}
 
 A <dfn>Function-valued Expression Map</dfn> is an `rml:ExpressionMap` that generates values by executing an [[FnO]] function and capturing one of its declared return values.
@@ -14,29 +20,36 @@ A <dfn>Function-valued Expression Map</dfn> is an `rml:ExpressionMap` that gener
 * A [=Function-valued Expression Map=] **MUST** have exactly one `rml:functionExecution` property.
 * A [=Function-valued Expression Map=] **MAY** have zero or one `rml:returnMap` property (or `rml:return` shortcut property).
 
-| Property | Domain | Range | Shortcut |
-| :--- | :--- | :--- | :--- |
-| `rml:functionExecution` | `rml:ExpressionMap` | `rml:FunctionExecution` | — |
-| `rml:returnMap` | `rml:ExpressionMap` | `rml:ReturnMap` | `rml:return` |
+| Property | Domain | Range |
+| :--- | :--- | :--- |
+| `rml:functionExecution` | `rml:ExpressionMap` | `rml:FunctionExecution` |
+| `rml:returnMap` | `rml:ExpressionMap` | `rml:ReturnMap` |
+| `rml:return` | `rml:ExpressionMap` | `fno:Output` |
 
 #### Return Map (`rml:ReturnMap`)
 
-A <dfn>Return Map</dfn> (`rml:ReturnMap`) is a [=Term Map=] that **MUST** generate an IRI specifying the [=Return=] of the referenced [=Function=].
-The property `rml:return` is the [=constant expression shortcut property=] of `rml:returnMap`.
+A <dfn>Return Map</dfn> (`rml:ReturnMap`) is a <a data-cite="RML-Core#dfn-term-map">Term Map</a> that **MUST** generate an IRI specifying the <a data-cite="FnO#dfn-output">output</a> of the referenced <a data-cite="FnO#dfn-function-declaration">function</a>.
+The property `rml:return` is the <a data-cite="RML-Core#dfn-constant-shortcut-properties">constant shortcut property</a> of `rml:returnMap`.
 
 <p class="note" title="Return Map Reference Target">
 A Return Map (or its <code>rml:return</code> shortcut) <strong>MUST</strong> generate the IRI of the <code>fno:Output</code> instance (such as <code>grel:stringOut</code>), and <strong>MUST NOT</strong> refer to the <code>fno:predicate</code> property IRI (such as <code>grel:stringOutput</code>).
 </p>
 
-If `rml:returnMap` and `rml:return` are omitted, the first return value declared in the `fno:returns` list of the referenced [=Function=] is used by default.
+If `rml:returnMap` and `rml:return` are omitted, the first return value declared in the `fno:returns` list of the referenced <a data-cite="FnO#dfn-function-declaration">function</a> is used by default.
 
 ### Conditional Expressions (`rml:condition`) {#conditions}
 
 An `rml:ExpressionMap` MAY specify an <dfn>rml:condition</dfn> property to conditionally govern whether RDF terms are generated during mapping evaluation.
 
-| Property | Domain | Range | Shortcut |
-| :--- | :--- | :--- | :--- |
-| `rml:condition` | `rml:ExpressionMap` | `rml:FunctionExecution` | — |
+<div class="ednote" title="Alternative: Conditioned Expression Map">
+<p>
+<strong>Editor's Note:</strong> As an alternative to adding <code>rml:condition</code> directly to <code>rml:ExpressionMap</code>, an explicit subclass of expression map (e.g., <code>rml:ConditionedExpressionMap</code>) could be defined to represent expression maps that specify conditional evaluation.
+</p>
+</div>
+
+| Property | Domain | Range |
+| :--- | :--- | :--- |
+| `rml:condition` | `rml:ExpressionMap` | `rml:FunctionExecution` |
 
 * The value of `rml:condition` **MUST** be an `rml:FunctionExecution`.
 * The referenced function execution **MUST** return an `xsd:boolean` value.
@@ -76,64 +89,87 @@ is equivalent to:
 
 ### Function Execution (`rml:FunctionExecution`) {#function-execution}
 
-A <dfn>Function Execution</dfn> (`rml:FunctionExecution`) is a construct that represents an invocation of a [[FnO]] [=Function=].
-It binds concrete values to the [=Function=]'s [=Parameter=]s via [=Input=]s, and specifies the target function to execute via an [=Function Map=].
+A <dfn>Function Execution</dfn> (`rml:FunctionExecution`) is a construct that represents an invocation of an [[FnO]] <a data-cite="FnO#dfn-function-declaration">function</a>.
+It binds concrete values to the function's <a data-cite="FnO#dfn-parameter">parameters</a> via [=Input=]s, and specifies the target function to execute via a [=Function Map=].
 
 * An `rml:FunctionExecution` **MUST** have exactly one [=Function Map=] specified via the `rml:functionMap` property, or via the `rml:function` shortcut property.
 * An `rml:FunctionExecution` **MAY** have zero or more [=Input=] properties specified via the `rml:input` property.
 
-| Property | Domain | Range | Shortcut |
-| :--- | :--- | :--- | :--- |
-| `rml:functionMap` | `rml:FunctionExecution` | `rml:FunctionMap` | `rml:function` |
-| `rml:input` | `rml:FunctionExecution` | `rml:Input` | — |
+| Property | Domain | Range |
+| :--- | :--- | :--- |
+| `rml:functionMap` | `rml:FunctionExecution` | `rml:FunctionMap` |
+| `rml:function` | `rml:FunctionExecution` | `fno:Function` |
+| `rml:input` | `rml:FunctionExecution` | `rml:Input` |
 
-An <dfn>Function Map</dfn> (`rml:FunctionMap`) is a [=Term Map=] that **MUST** generate an IRI. That IRI specifies the referenced [[FnO]] [=Function=].
-The property `rml:function` is the [=constant expression shortcut property=] of `rml:functionMap`.
+A <dfn>Function Map</dfn> (`rml:FunctionMap`) is a <a data-cite="RML-Core#dfn-term-map">Term Map</a> that **MUST** generate an IRI. That IRI specifies the referenced [[FnO]] <a data-cite="FnO#dfn-function-declaration">function</a>.
+The property `rml:function` is the <a data-cite="RML-Core#dfn-constant-shortcut-properties">constant shortcut property</a> of `rml:functionMap`.
 
 #### Execution Reuse
 
 An `rml:FunctionExecution` can be identified by an IRI or a blank node:
 
 * **Named Execution (IRI)**: When an `rml:FunctionExecution` is identified by an IRI, conforming RML processors **MUST** treat this as a shared, reusable function execution. If multiple expression maps (or multiple triples maps) reference the same execution IRI for a given logical iteration, the processor **MUST** evaluate the execution once and reuse the results across all referencing locations, rather than executing the function multiple times.
-* **Anonymous Execution (Blank Node)**: When identified by a blank node, the execution is scoped locally to its parent expression map.
+* **Anonymous Execution (Blank Node)**: When identified by a blank node, the execution is specific to its enclosing expression map and is not shared across other expression maps.
+
+See [Function Execution Reuse](#execution-reuse) for an example illustrating how a shared execution is used across multiple expression maps.
 
 #### Dynamic Function Selection (`rml:functionMap`)
 
-In the vast majority of mappings, the function to execute is known statically at mapping design time, in which case the constant shortcut `rml:function` is used.
+When the target function is constant, the shortcut property `rml:function` is used. Alternatively, an explicit `rml:functionMap` allows the target function IRI to be determined dynamically per logical iteration from data values in the logical source (e.g., dynamically selecting a parsing, hashing, or conversion function based on a data field).
 
-However, because `rml:functionMap` is a full [=Term Map=], it also supports dynamic function selection. When specified using an `rml:reference` or `rml:template`, the target function IRI can be determined dynamically per iteration from data values in the logical source (e.g., dynamically choosing between different hashing, translation, or parsing functions specified in a source column).
+A conforming RML processor MAY support dynamic function selection via `rml:functionMap`. Processors that do not support dynamic function selection are not required to implement this feature.
+
+<div class="ednote" title="Issue #84: Dynamic Function Selection">
+<p>
+Dynamic function selection is an optional feature. 
+We invite user feedback on <a href="https://github.com/kg-construct/rml-fnml/issues/84">Issue #84</a> to share concrete use cases and help determine whether this should become a stronger requirement (such as SHOULD or MUST).
+</p>
+</div>
+
+<div class="ednote">
+<p>
+<strong>TODO (Testing):</strong> How should optional permission requirements (<code>MAY</code>) be verified in the test suite? Tests for optional features should not produce test suite failures with the same conformance impact as missing <code>MUST</code> or <code>SHOULD</code> requirements.
+</p>
+</div>
 
 ### Inputs and Parameter Mapping (`rml:Input`) {#inputs}
 
-An <dfn>Input</dfn> (`rml:Input`) is a construct that provides a pairwise connection between a [[FnO]] [=Parameter=] and an input value generated from the logical iteration.
+An <dfn>Input</dfn> (`rml:Input`) is a construct that provides a pairwise connection between a [[FnO]] <a data-cite="FnO#dfn-parameter">parameter</a> and an input value generated from the logical iteration.
 
 * An `rml:Input` **MUST** have exactly one [=Parameter Map=] specified via the `rml:parameterMap` property, or via the `rml:parameter` shortcut property.
 * An `rml:Input` **MUST** have exactly one input value map specified via the `rml:inputValueMap` property, or via the `rml:inputValue` shortcut property.
 
-| Property | Domain | Range | Shortcut |
-| :--- | :--- | :--- | :--- |
-| `rml:parameterMap` | `rml:Input` | `rml:ParameterMap` | `rml:parameter` |
-| `rml:inputValueMap` | `rml:Input` | `rml:TermMap` | `rml:inputValue` |
+| Property | Domain | Range |
+| :--- | :--- | :--- |
+| `rml:parameterMap` | `rml:Input` | `rml:ParameterMap` |
+| `rml:parameter` | `rml:Input` | `fno:Parameter` |
+| `rml:inputValueMap` | `rml:Input` | `rml:TermMap` |
+| `rml:inputValue` | `rml:Input` | `rdfs:Resource` |
 
-A <dfn>Parameter Map</dfn> (`rml:ParameterMap`) is a [=Term Map=] that **MUST** generate an IRI. That IRI specifies the referenced [[FnO]] [=Parameter=].
-The property `rml:parameter` is the [=constant expression shortcut property=] of `rml:parameterMap`.
+A <dfn>Parameter Map</dfn> (`rml:ParameterMap`) is a <a data-cite="RML-Core#dfn-term-map">Term Map</a> that **MUST** generate an IRI. That IRI specifies the referenced [[FnO]] <a data-cite="FnO#dfn-parameter">parameter</a>.
+The property `rml:parameter` is the <a data-cite="RML-Core#dfn-constant-shortcut-properties">constant shortcut property</a> of `rml:parameterMap`.
 
 <p class="note" title="Parameter Map Reference Target">
 A Parameter Map (or its <code>rml:parameter</code> shortcut) <strong>MUST</strong> generate the IRI of the <code>fno:Parameter</code> instance (such as <code>grel:valueParam</code>), and <strong>MUST NOT</strong> refer to the <code>fno:predicate</code> property IRI (such as <code>grel:valueParameter</code>).
-In FnO, the <code>fno:Parameter</code> IRI denotes the parameter entity itself within the function declaration, whereas <code>fno:predicate</code> is used only within generic RDF execution descriptions. RML-FNML relies on the parameter entity IRI to remain independent of RDF serialization formats.
 </p>
 
 #### Dynamic Parameter Mapping (`rml:parameterMap`)
 
-In standard mappings, the parameter to which an input value is bound is fixed and declared using the `rml:parameter` constant shortcut.
+When the target parameter is constant, the shortcut property `rml:parameter` is used. Alternatively, an explicit `rml:ParameterMap` allows the target parameter IRI to be determined dynamically per logical iteration from data values in the logical source (e.g., when binding parameters dynamically for key-value structures or dynamic attributes).
 
-Using an explicit, dynamic `rml:ParameterMap` allows mappings to bind parameters dynamically when working with semi-structured data sources containing key-value pairs or dynamic attributes, where the target parameter IRI is determined at runtime from the data record itself.
+A conforming RML processor MAY support dynamic parameter mapping via an explicit `rml:ParameterMap`. Processors that do not support dynamic parameter mapping are not required to implement this feature.
+
+<div class="ednote" title="Issue #84: Dynamic Parameter Mapping">
+<p>
+Dynamic parameter mapping is an optional feature (<code>MAY</code>). We invite user feedback on <a href="https://github.com/kg-construct/rml-fnml/issues/84">Issue #84</a> to share concrete use cases and help determine whether this should become a stronger requirement.
+</p>
+</div>
 
 #### Input Value Mapping (`rml:inputValueMap`)
 
-The property `rml:inputValueMap` links an `rml:Input` to a [=Term Map=] that generates the value to be bound to the referenced [=Parameter=].
-This [=Term Map=] refers to values from the iteration of the enclosing triples map's logical source, handled just like any regular [=Term Map=] (e.g. using `rml:reference`, `rml:template`, or nested `rml:functionExecution`).
-The property `rml:inputValue` is the [=constant expression shortcut property=] of `rml:inputValueMap`.
+The property `rml:inputValueMap` links an `rml:Input` to a <a data-cite="RML-Core#dfn-term-map">Term Map</a> that generates the value to be bound to the referenced <a data-cite="FnO#dfn-parameter">parameter</a>.
+This <a data-cite="RML-Core#dfn-term-map">Term Map</a> refers to values from the iteration of the enclosing triples map's logical source, handled just like any regular <a data-cite="RML-Core#dfn-term-map">Term Map</a> (e.g. using `rml:reference`, `rml:template`, or nested `rml:functionExecution`).
+The property `rml:inputValue` is the <a data-cite="RML-Core#dfn-constant-shortcut-properties">constant shortcut property</a> of `rml:inputValueMap`.
 
 ### Complete Mapping Example
 

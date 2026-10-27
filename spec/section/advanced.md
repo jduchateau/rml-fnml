@@ -2,7 +2,7 @@
 
 This section illustrates advanced usage patterns combining function executions with execution reuse, nested expressions, multi-valued iterations, and join conditions.
 
-### Function Execution Reuse
+### Function Execution Reuse {#execution-reuse}
 
 When a function produces multiple outputs, or when an expensive transformation must be shared across different mapping rules, identifying the `rml:FunctionExecution` with an IRI enables execution reuse.
 
@@ -55,7 +55,7 @@ Because `<#AddressExecution>` is named with an IRI, the `ex:parseAddress` functi
 
 ### Nested Functions
 
-As parameter input values are represented using [=Term Map=]s, functions can be arbitrarily nested: the output of one function execution serves as the input parameter to another function execution.
+As parameter input values are represented using <a data-cite="RML-Core#dfn-term-map">Term Maps</a>, functions can be arbitrarily nested: the output of one function execution serves as the input parameter to another function execution.
 
 <aside class="example" id="example-nested-function" title="Nested Function Executions">
 <aside class="ex-mapping">
@@ -174,7 +174,7 @@ Because only two values (`10` and `25`) satisfy the condition `score != 0`, only
 
 When performing joins across heterogeneous data sources where foreign keys do not share identical literal representations (e.g. inconsistent case, differing encodings, or extraneous prefixes), function executions can be applied within <a data-cite="RML-Core#dfn-join-condition">join conditions</a>.
 
-Because a child map (`rml:childMap`) and parent map (`rml:parentMap`) are defined in [[RML-Core]] as [=expression maps=], either can be specified as a [=Function-valued Expression Map=].
+Because a child map (`rml:childMap`) and parent map (`rml:parentMap`) are defined in [[RML-Core]] as <a data-cite="RML-Core#dfn-expression-map">expression maps</a>, either can be specified as a [=Function-valued Expression Map=].
 
 The following example joins student records with their enrolled courses. In the child data source, the course identifier is stored in lowercase (e.g. `"cs101"`), whereas the parent data source stores course codes in uppercase (`"CS101"`). The join condition specifies an `rml:childMap` that executes `grel:toUppercase` on the child reference to match the parent `code`:
 
