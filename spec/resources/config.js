@@ -33,6 +33,13 @@ var respecConfig = {
             companyURL: "https://knows.idlab.ugent.be/"
         },
         {
+            name: "Jakub Duchateau",
+            company: "University of Liège",
+            url: "https://jduchateau.github.io",
+            orcid: "0009-0009-5090-8192",
+            companyURL: "https://uliege.be/"
+        },
+        {
             name: "Samaneh Jozashoori",
             company: "metaphacts",
             url: "https://scholar.google.com/citations?user=7gXRi3YAAAAJ",
@@ -84,12 +91,12 @@ var respecConfig = {
     latestVersion: null,
     license: "w3c-software-doc",
     localBiblio: {
-        RML: {
-            title: "RDF Mapping Language (RML)",
-            href: "https://rml.io/specs/rml/",
-            status: "Unofficial Draft",
-            publisher: "IDLab - imec - Ghent University",
-            date: "08 October 2020",
+        "RML-Core": {
+            title: "RML-Core",
+            href: "https://w3id.org/rml/core/spec",
+            status: "Draft Community Group Report",
+            publisher: "W3C",
+            date: "16 March 2026",
         },
         FnO: {
             title: "Function Ontology (FnO)",
@@ -98,12 +105,12 @@ var respecConfig = {
             publisher: "IDLab - imec - Ghent University",
             date: "10 November 2021",
         },
-        CollectionsContainers: {
-            title: "Collections and Containers in RML",
-            href: "https://w3id.org/kg-construct/collections-containers",
-            status: "Unofficial Draft",
-            publisher: "Knowledge Graph Construction W3C Community Group ",
-            date: "16 August 2022",
+        "RML-CC": {
+            title: "RML-CC: Collections and Containers in RML",
+            href: "https://w3id.org/rml/cc/spec",
+            status: "Draft Community Group Report",
+            publisher: "Knowledge Graph Construction W3C Community Group",
+            date: "25 February 2025",
         },
     },
 
