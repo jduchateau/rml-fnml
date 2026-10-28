@@ -9,7 +9,7 @@ An <a data-cite="RML-Core#dfn-expression-map">expression map</a> MUST have one o
 * **0 or 1 `rml:functionExecution`**, or
 * another property defined by a subclass of `rml:ExpressionMap`.
 
-An expression map that specifies `rml:functionExecution` is termed a [=Function-valued Expression Map=]. A Function-valued Expression Map MAY additionally specify 0 or 1 `rml:returnMap` property (or `rml:return` shortcut property).
+An expression map that specifies `rml:functionExecution` is termed a [=Function-valued Expression Map=]. A Function-valued Expression Map MUST have zero or one `rml:returnMap` property (or `rml:return` shortcut property).
 
 Additionally, an expression map MAY specify 0 or 1 `rml:condition` property.
 

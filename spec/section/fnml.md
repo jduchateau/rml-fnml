@@ -9,7 +9,7 @@ This section defines the classes, properties, and constraints of RML-FNML.
 
 <div class="ednote" title="Diagram update">
 <p>
-<strong>Editor's Note:</strong> This diagram needs to be updated to integrate <code>rml:condition</code> and Function-valued Expression Map (as well as the possible alternative of a Conditioned Expression Map). It also reflects ongoing discussions regarding whether <code>rml:functionMap</code> and <code>rml:parameterMap</code> should be retained or removed.
+This diagram needs to be updated to integrate <code>rml:condition</code> and Function-valued Expression Map. It also needs to reflects ongoing discussions regarding whether <code>rml:functionMap</code> and <code>rml:parameterMap</code> should be retained or removed.
 </p>
 </div>
 
@@ -17,8 +17,9 @@ This section defines the classes, properties, and constraints of RML-FNML.
 
 A <dfn>Function-valued Expression Map</dfn> is an `rml:ExpressionMap` that generates values by executing an [[FnO]] function and capturing one of its declared return values.
 
-* A [=Function-valued Expression Map=] **MUST** have exactly one `rml:functionExecution` property.
-* A [=Function-valued Expression Map=] **MAY** have zero or one `rml:returnMap` property (or `rml:return` shortcut property).
+A [=Function-valued Expression Map=] **MUST** have:
+* exactly one `rml:functionExecution` property,
+* zero or one `rml:returnMap` property (or `rml:return` shortcut property).
 
 | Property | Domain | Range |
 | :--- | :--- | :--- |

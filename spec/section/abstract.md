@@ -1,4 +1,4 @@
-RML-FNML is an extension of the RDF Mapping Language (RML) that increases the language's capability to perform data transformations when generating RDF datasets from heterogeneous data sources.
+RML-FNML is an extension of the RDF Mapping Language (RML) to specify data transformations when generating RDF datasets from heterogeneous data sources.
 
 Data transformations are specified through declarative function executions: implementation-independent function invocations that link declarative function descriptions defined using the [[[FnO]]] with data extracted from logical iterations.
 
